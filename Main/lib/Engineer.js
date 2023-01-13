@@ -6,6 +6,18 @@ class Engineer extends Employee {
         this.github = github;
     }
 
+    getName() {
+        return this.name;
+    };
+    
+    getId() {
+        return this.id;
+    };
+    
+    getEmail() {
+        return this.email;
+    };
+
     getGithub() {
         return this.github;
     }
@@ -15,8 +27,4 @@ class Engineer extends Employee {
     }
 }
 
-Engineer.getName();
-Engineer.getEmail();
-Engineer.getId();
-Engineer.getGithub();
-Engineer.getRole();
+module.exports = Engineer;

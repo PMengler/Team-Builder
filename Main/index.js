@@ -5,8 +5,8 @@ const inquirer = require('inquirer');
 const path = require('path');
 const fs = require('fs');
 
-const DIST_DR = path.resolve(__dirname, 'dist');
-const distPath = path.resolve(DIST_DR, 'team.html');
+const DIST = path.resolve(__dirname, 'dist');
+const distPath = path.join(DIST, 'Myteam.html');
 
 const render = require('./src/template.js');
 
@@ -164,8 +164,8 @@ function runApp () {
 
 // need to write this function
     function generateTeam() {
-        if (!fs.existsSync(DIST_DIR)) {
-            fs.mkdirSync(DIST_DIR);
+        if (!fs.existsSync(DIST)) {
+            fs.mkdirSync(DIST);
         }
         fs.writeFileSync(distPath, render(myTeam), 'utf8');
     }
