@@ -8,6 +8,7 @@ header {
     flex-direction: column;
     margin: 100 50 50 50;
     margin-bottom: 50px;
+    max-width: 500px;
 }
 
 .card, .list-group-item {
