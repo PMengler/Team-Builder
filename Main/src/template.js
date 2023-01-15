@@ -1,7 +1,6 @@
 const generateHTML = myTeam => {
     const generateManager = manager => {
         return `
-        <div class="container">
             <div class="container card">
                 <div class="card-body">
                     <h3 class="card-title">Manager</h3>
@@ -19,7 +18,6 @@ const generateHTML = myTeam => {
                         </li>
                 </div>
             </div>
-        </div>
         `
     }
 
@@ -98,12 +96,11 @@ module.exports = myTeam => {
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Team Builder</title>
-            <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap"> -->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
                 rel="stylesheet" 
                 integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" 
                 crossorigin="anonymous">
-            <link rel="stylesheet" href="./dist/style.css">
+            <link rel="stylesheet" href="../dist/style.css">
         </head>
         <body class="bg-dark">
             <header class="bg-info">
