@@ -1,4 +1,96 @@
-function generateHTML() {
+const generateHTML = myTeam => {
+    const generateManager = manager => {
+        return `
+        <div class="container">
+            <div class="container card">
+                <div class="card-body">
+                    <h3 class="card-title">Manager</h3>
+                    <h5 class="card-title">${manager.getName()}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            Employee ID: ${manager.getId()}
+                        </li>
+                        <li class="list-group-item">
+                            Email Address: <a href="mailto:${manager.getEmail()}">
+                            ${manager.getEmail()}</a>
+                        </li>
+                        <li class="list-group-item">
+                            Office Number: ${manager.getOfficeNumber()}
+                        </li>
+                </div>
+            </div>
+        </div>
+        `
+    }
+
+    const generateEngineer = engineer => {
+        return `
+        <div class="container card">
+            <div class="card-body">
+                <h3 class="card-title">Engineer</h3>
+                <h5 class="card-title">${engineer.getName()}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Employee ID: ${engineer.getId()}
+                    </li>
+                    <li class="list-group-item">
+                        Email Address: <a href="mailto:${engineer.getEmail()}">
+                        ${engineer.getEmail()}</a>
+                    </li>
+                    <li class="list-group-item">
+                        GitHub: <a href="https://github.com/${engineer.getGithub()}">
+                        https://github.com/${engineer.getGithub()}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        `
+    }
+
+    const generateIntern = intern => {
+        return `
+        <div class="container card">
+            <div class="card-body">
+                <h3 class="card-title">Intern</h3>
+                <h5 class="card-title">${intern.getName()}</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        Employee ID: ${intern.getId()}
+                    </li>
+                    <li class="list-group-item">
+                        Email Address: <a href="mailto:${intern.getEmail()}">
+                        ${intern.getEmail()}</a>
+                    </li>
+                    <li class="list-group-item">
+                        School: ${intern.getSchool()}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        `
+    }
+    
+    const html = [];
+
+    html.push(myTeam
+        .filter(employee => employee.getRole() === "Manager")
+        .map(manager => generateManager(manager))
+    );
+    html.push(myTeam
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineer(engineer))
+        .join("")
+        );
+    html.push(myTeam
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => generateIntern(intern))
+        .join("")
+    );
+
+    return html.join("");
+};
+
+module.exports = myTeam => {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -6,73 +98,20 @@ function generateHTML() {
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <title>Team Builder</title>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap">
-            <link rel="stylesheet" href="style.css">
-
+            <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap"> -->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" 
+                rel="stylesheet" 
+                integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" 
+                crossorigin="anonymous">
+            <link rel="stylesheet" href="./dist/style.css">
         </head>
-        <body>
-            <h1>My Cards</h1>
-            ${generateCards(cards)}
+        <body class="bg-dark">
+            <header class="bg-info">
+                <h1 class="text-center">My Team</h1>
+            </header>
+            ${generateHTML(myTeam)}
         </body>
         <script src="../index.js"></script>
     </html>`
 }
 
-function generateManager() {
-    return `
-    <div class="card 1">
-        <div class="card-body">
-            <h5 class="card-title">Manager</h5>
-            <ul class="list-group list-group-flush">
-    `
-}
-
-function generateEngineer() {
-    return `
-    <div class="card 2">
-        <div class="card-body">
-        <h5 class="card-title">Engineer</h5>
-        <ul class="list-group list-group-flush">
-    `
-}
-
-function generateIntern() {
-    return `
-    <div class="card 3">
-        <div class="card-body">
-        <h5 class="card-title">Intern</h5>
-        <ul class="list-group list-group-flush">
-    `
-}
-
-// const cards = [
-//     {
-//       title: "Card 1",
-//       content: "Content for card 1"
-//     },
-//     {
-//       title: "Card 2",
-//       content: "Content for card 2"
-//     },
-//     {
-//       title: "Card 3",
-//       content: "Content for card 3"
-//     }
-//   ];
-  
-//   const generateCard = (card) => {
-//     return `
-//       <div class="card">
-//         <h2>${card.title}</h2>
-//         <p>${card.content}</p>
-//       </div>
-//     `;
-//   }
-  
-//   const generateCards = (cards) => {
-//     let cardElements = "";
-//     cards.forEach((card) => {
-//       cardElements += generateCard(card);
-//     });
-//     return cardElements;
-//   }
